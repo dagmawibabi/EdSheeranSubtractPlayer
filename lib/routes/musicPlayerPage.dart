@@ -342,9 +342,9 @@ class _MusicPlayerPageState extends State<MusicPlayerPage> {
                               icon: Icon(
                                 Ionicons.heart_outline,
                                 size: 25.0,
-                                color: isFav == true
+                                color: isDarkMode == true
                                     ? primaryYellow
-                                    : primaryYellow,
+                                    : Colors.black,
                               ),
                             ),
                     ],
