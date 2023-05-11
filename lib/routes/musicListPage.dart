@@ -77,13 +77,13 @@ class _MusicListPageState extends State<MusicListPage> {
       "liked": true,
     },
     {
-      "icon": Icons.star_border,
+      "icon": Ionicons.flash_outline,
       "title": "Spark",
       "artist": "Ed Sheeran",
       "liked": true,
     },
     {
-      "icon": Icons.grass_outlined,
+      "icon": Icons.star_border, //grass_outlined,
       "title": "Vega",
       "artist": "Ed Sheeran",
       "liked": true,
@@ -106,6 +106,7 @@ class _MusicListPageState extends State<MusicListPage> {
       "artist": "Ed Sheeran",
       "liked": true,
     },
+    // Bonus
     {
       "icon": Icons.local_florist,
       "title": "Wild Flowers (Bonus Track)",
@@ -125,13 +126,37 @@ class _MusicListPageState extends State<MusicListPage> {
       "liked": true,
     },
     {
-      "icon": Icons.directions_walk_outlined,
+      "icon": Icons.directions_run,
       "title": "Moving (Bonus Track)",
       "artist": "Ed Sheeran",
       "liked": true,
     },
+    // Deluxe
+    {
+      "icon": Icons.balance_outlined,
+      "title": "Balance (Deluxe Track)",
+      "artist": "Ed Sheeran",
+      "liked": true,
+    },
+    {
+      "icon": LineIcons.spider,
+      "title": "Fear (Deluxe Track)",
+      "artist": "Ed Sheeran",
+      "liked": true,
+    },
+    {
+      "icon": Icons.check,
+      "title": "Get Over It (Deluxe Track)",
+      "artist": "Ed Sheeran",
+      "liked": true,
+    },
+    {
+      "icon": Ionicons.calendar_outline,
+      "title": "Ours (Deluxe Track)",
+      "artist": "Ed Sheeran",
+      "liked": true,
+    },
   ];
-
   var currentSong = "";
   int currentIndex = 0;
   void loadPlaylist() async {
@@ -145,6 +170,21 @@ class _MusicListPageState extends State<MusicListPage> {
         audios: playlist,
       ),
       loopMode: LoopMode.playlist,
+      showNotification: false,
+      notificationSettings: NotificationSettings(
+        prevEnabled: true,
+        nextEnabled: true,
+        playPauseEnabled: true,
+        customNextAction: (player) {
+          next();
+        },
+        customPrevAction: (player) {
+          previous();
+        },
+        customPlayPauseAction: (player) {
+          playPause();
+        },
+      ),
     );
     player.stop();
   }
@@ -196,6 +236,7 @@ class _MusicListPageState extends State<MusicListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: primaryYellow,
+      // backgroundColor: Color.fromARGB(255, 10, 10, 10),
       body: ListView(
         children: [
           // Album Art
@@ -211,17 +252,19 @@ class _MusicListPageState extends State<MusicListPage> {
                   tag: "albumArt",
                   child: Container(
                     width: MediaQuery.of(context).size.width,
-                    height: 450.0,
+                    height: 420.0,
                     child: Image.asset(
-                      "assets/images/index.jpeg",
+                      // "assets/images/index.jpeg",
+                      "assets/images/edsheeran.webp",
+                      // "assets/images/subtract-ed-sheeran.gif",
                       fit: BoxFit.cover,
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: 10.0),
+              SizedBox(height: 20.0),
               Padding(
-                padding: EdgeInsets.only(left: 20.0, bottom: 20.0),
+                padding: EdgeInsets.only(left: 15.0, bottom: 10.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -235,34 +278,35 @@ class _MusicListPageState extends State<MusicListPage> {
                     Text(
                       "Ed Sheeran",
                       style: GoogleFonts.nunito(
-                        fontSize: 18.0,
+                        fontSize: 17.0,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ],
                 ),
               ),
-              Container(
-                height: 30.0,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      Colors.transparent,
-                      Color(0xff101010),
-                    ],
-                  ),
-                ),
-              ),
+              // Container(
+              //   height: 30.0,
+              //   width: MediaQuery.of(context).size.width,
+              //   decoration: BoxDecoration(
+              //     gradient: LinearGradient(
+              //       begin: Alignment.topCenter,
+              //       end: Alignment.bottomCenter,
+              //       colors: [
+              //         Colors.transparent,
+              //         Color(0xff101010),
+              //       ],
+              //     ),
+              //   ),
+              // ),
             ],
           ),
           // SizedBox(height: 10.0),
           // Music List
           Container(
             color: Color(0xff101010),
-            height: MediaQuery.of(context).size.height * 0.6,
+            height: MediaQuery.of(context).size.height * 0.5,
+            padding: EdgeInsets.only(top: 6.0),
             child: ListView(
               children: [
                 for (var eachMusic in albumSongs)
@@ -290,7 +334,7 @@ class _MusicListPageState extends State<MusicListPage> {
                           currentSong == eachMusic["title"] ? true : false,
                     ),
                   ),
-                SizedBox(height: 280.0),
+                SizedBox(height: 300.0),
               ],
             ),
           )

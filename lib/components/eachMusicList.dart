@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, sized_box_for_whitespace, unnecessary_this
 
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ionicons/ionicons.dart';
@@ -17,8 +19,9 @@ class EachMusicList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Color primaryYellow = Color(0xfff1d80b);
+    Color selectedColor = Colors.greenAccent;
     return Container(
-      color: this.isPlaying == true ? Color(0xff15) : Color(0xff101010),
+      // color: this.isPlaying == true ? Color(0xff15) : Color(0xff101010),
       padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -28,8 +31,7 @@ class EachMusicList extends StatelessWidget {
             children: [
               Icon(
                 this.musicData["icon"],
-                color:
-                    this.isPlaying == true ? Colors.greenAccent : primaryYellow,
+                color: this.isPlaying == true ? selectedColor : primaryYellow,
               ),
               SizedBox(width: 10.0),
               Column(
@@ -41,7 +43,7 @@ class EachMusicList extends StatelessWidget {
                       fontSize: 16.0,
                       fontWeight: FontWeight.bold,
                       color: this.isPlaying == true
-                          ? Colors.greenAccent
+                          ? selectedColor
                           : primaryYellow,
                     ),
                   ),
@@ -52,7 +54,7 @@ class EachMusicList extends StatelessWidget {
                       fontSize: 14.0,
                       fontWeight: FontWeight.bold,
                       color: this.isPlaying == true
-                          ? Colors.greenAccent.withOpacity(0.4)
+                          ? selectedColor.withOpacity(0.4)
                           : primaryYellow.withOpacity(0.5),
                     ),
                   ),
@@ -70,15 +72,14 @@ class EachMusicList extends StatelessWidget {
                         Ionicons.heart,
                         size: 20.0,
                         color: this.isPlaying == true
-                            ? Colors.greenAccent
+                            ? selectedColor
                             : primaryYellow,
                       ),
                     )
                   : Container(),
               Icon(
                 Icons.more_vert,
-                color:
-                    this.isPlaying == true ? Colors.greenAccent : primaryYellow,
+                color: this.isPlaying == true ? selectedColor : primaryYellow,
               ),
             ],
           ),

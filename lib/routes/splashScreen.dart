@@ -27,8 +27,8 @@ class _SplashScreenState extends State<SplashScreen> {
     return FutureBuilder(
       future: getImagePalette(),
       builder: (context, snapshot) => Scaffold(
-        backgroundColor: snapshot.data,
-        // backgroundColor: Color.fromARGB(255, 20, 20, 20),
+        // backgroundColor: snapshot.data,
+        backgroundColor: Color.fromARGB(255, 10, 10, 10),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -40,7 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
             //     fontWeight: FontWeight.bold,
             //   ),
             // ),
-            SizedBox(height: 10.0),
+            // SizedBox(height: 10.0),
             GestureDetector(
               onTap: () {
                 Navigator.popAndPushNamed(context, "home");
@@ -50,7 +50,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 child: Container(
                   clipBehavior: Clip.hardEdge,
                   decoration: BoxDecoration(
-                    color: Colors.red,
+                    // color: Colors.red,
                     borderRadius: BorderRadius.all(
                       Radius.circular(
                         10.0,
@@ -58,15 +58,15 @@ class _SplashScreenState extends State<SplashScreen> {
                     ),
                   ),
                   child: Image.asset(
-                    "assets/images/index.jpeg",
+                    "assets/images/subtract-ed-sheeran.gif",
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.width,
-                    fit: BoxFit.cover,
+                    fit: BoxFit.fitHeight,
                   ),
                 ),
               ),
             ),
-            SizedBox(height: 10.0),
+            // SizedBox(height: 10.0),
             // Text(
             //   "Subtract",
             //   style: GoogleFonts.nunito(
